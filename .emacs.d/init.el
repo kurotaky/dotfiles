@@ -30,9 +30,9 @@
 (require 'highlight-indentation)
 
 ;; scss-mode
-(autoload 'scss-mode "scss-mode")
-(setq scss-compile-at-save nil) ;; 自動コンパイルをオフにする
-(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+;;(autoload 'scss-mode "scss-mode")
+;;(setq scss-compile-at-save nil) ;; 自動コンパイルをオフにする
+;;(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
 ;;coffee-mode
 (add-to-list 'load-path "~/.emacs.d/vendor/coffee-mode")
