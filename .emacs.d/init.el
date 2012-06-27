@@ -11,6 +11,10 @@
 (set-selection-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
 
+;; Marmaladeのリポジトリを使用
+(require 'package)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
 
 ;; load-path を追加する関数を定義
 (defun add-to-load-path (&rest paths)
