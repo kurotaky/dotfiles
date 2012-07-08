@@ -6,6 +6,7 @@ export CC=gcc-4.2
 alias -g be="bundle exec"
 alias -g E='emacs -nw'
 alias -g rs="rspec"
+alias -g r="rails"
 
 # users generic .zshrc file for zsh(1)
 
