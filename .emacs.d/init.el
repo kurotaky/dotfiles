@@ -11,6 +11,13 @@
 (set-selection-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
 
+;;; 履歴数を大きくする
+(setq history-length 10000)
+
+;;; 最近開いたファイルを保存する数を増やす
+(setq recentf-max-saved-items 10000)
+
+
 ;; Emacs Lisp Package Archive（ELPA）──Emacs Lispパッケージマネーャ
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -103,3 +110,24 @@
 
 ;; "C-t" でウィンドウを切り替える。初期値はtranspose-chars
 (define-key global-map (kbd "C-t") 'other-window)
+
+;; grep
+(define-key global-map (kbd "M-C-g") 'grep)
+
+;;; 再帰的にgrep
+(require 'grep)
+(setq grep-command-before-query "grep -nH -r -e ")
+(defun grep-default-command ()
+  (if current-prefix-arg
+      (let ((grep-command-before-target
+             (concat grep-command-before-query
+                     (shell-quote-argument (grep-tag-default)))))
+        (cons (if buffer-file-name
+                  (concat grep-command-before-target
+                          " *."
+                          (file-name-extension buffer-file-name))
+                (concat grep-command-before-target " ."))
+              (+ (length grep-command-before-target) 1)))
+    (car grep-command)))
+(setq grep-command (cons (concat grep-command-before-query " .")
+                         (+ (length grep-command-before-query) 1)))

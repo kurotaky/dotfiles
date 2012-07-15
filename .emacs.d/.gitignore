@@ -1,0 +1,7 @@
+.*~
+*~
+/.emacs/*
+!/.emacs.d/init.el
+!/.emacs.d/elpa
+!/.emacs.d/elisp
+!/.emacs.d/public_repos
