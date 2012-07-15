@@ -3,8 +3,9 @@
 ;;; Code:
 
 
-;;;### (autoloads (scss-mode) "scss-mode" "scss-mode.el" (20462 30554))
-;;; Generated autoloads from scss-mode.el
+;;;### (autoloads (scss-mode) "scss-mode" "../../../../../.emacs.d/elpa/scss-mode-0.5.0/scss-mode.el"
+;;;;;;  "ea53d1f4e749a4ecebfd07a1d173b0e9")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/scss-mode-0.5.0/scss-mode.el
 
 (autoload 'scss-mode "scss-mode" "\
 Major mode for editing SCSS files, http://sass-lang.com/
@@ -17,7 +18,9 @@ Special commands:
 
 ;;;***
 
-;;;### (autoloads nil nil ("scss-mode-pkg.el") (20462 30554 900392))
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/scss-mode-0.5.0/scss-mode-pkg.el"
+;;;;;;  "../../../../../.emacs.d/elpa/scss-mode-0.5.0/scss-mode.el")
+;;;;;;  (20482 34361 807353))
 
 ;;;***
 

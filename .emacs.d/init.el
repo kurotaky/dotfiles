@@ -11,9 +11,10 @@
 (set-selection-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
 
-;; Marmaladeのリポジトリを使用
+;; Emacs Lisp Package Archive（ELPA）──Emacs Lispパッケージマネーャ
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
 (package-initialize)
 
 ;; load-path を追加する関数を定義
@@ -26,6 +27,21 @@
         (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
             (normal-top-level-add-subdirs-to-load-path))))))
 
+;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
+(add-to-load-path "elisp" "public_repos" "elpa")
+
+
+;;auto-installの設定
+(when(require 'auto-install nil t)
+  ;;インストールディレクトリを設定する
+  (setq auto-install-directory "~/.emacs.d/elisp/")
+  ;;EmacsWikiに登録されているelispの名前を取得する
+  (auto-install-update-emacswiki-package-name t)
+  ;;必要であればプロキシの設定を行う
+  ;;(setq url-proxy-services '(("http" . "localhost:8339")))
+  ;;install-elispの関数を利用可能にする
+  (auto-install-compatibility-setup))
+
 
 ;; coffee-mode インデントを2にする
 (defun coffee-custom ()
@@ -36,11 +52,12 @@
 (add-hook 'coffee-mode-hook
           '(lambda() (coffee-custom)))
 
-
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa"))
+;;scss mode
+(setq exec-path (cons (expand-file-name "~/.gem/ruby/1.8/bin") exec-path))
 (autoload 'scss-mode "scss-mode")
 (setq scss-compile-at-save nil) ;; 自動コンパイルをオフにする
-(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+(add-to-list 'auto-mode-alist '("¥¥.scss$" . scss-mode))
+
 
 ;;
 ;; meta key
@@ -68,14 +85,21 @@
 ;; インデントはスペースで
 (setq-default indent-tabs-mode nil)
 
-
+;;
 ;; keymaps
+;;______________________________________________________________________
 
 ;; C-hをBackSpaceに
 (global-set-key "\C-h" 'delete-backward-char)
 
-;; C-mでインデントも。
+;; C-m 改行 + インデント
 (global-set-key "\C-m" 'newline-and-indent)
 
 ;; C-x ?でヘルプ
 (global-set-key "\C-x?" 'help)
+
+;; 折り返しトグルコマンド
+(define-key global-map (kbd "C-c l") 'toggle-truncate-lines)
+
+;; "C-t" でウィンドウを切り替える。初期値はtranspose-chars
+(define-key global-map (kbd "C-t") 'other-window)
