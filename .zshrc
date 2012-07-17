@@ -1,6 +1,8 @@
 # PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=/usr/local/bin:$PATH
-# export PATH=$HOME/.powconfig:$PATH
+export PATH=$HOME/.rbenv/bin:$PATH
+
+export PATH=$HOME/.powconfig:$PATH
 # if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(rbenv init -)"
 export CC=gcc-4.2
