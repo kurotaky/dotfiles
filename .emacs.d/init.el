@@ -39,15 +39,15 @@
 
 
 ;;auto-installの設定
-(when(require 'auto-install nil t)
+;;(when(require 'auto-install nil t)
   ;;インストールディレクトリを設定する
-  (setq auto-install-directory "~/.emacs.d/elisp/")
+;;  (setq auto-install-directory "~/.emacs.d/elisp/")
   ;;EmacsWikiに登録されているelispの名前を取得する
-  (auto-install-update-emacswiki-package-name t)
+;;  (auto-install-update-emacswiki-package-name t)
   ;;必要であればプロキシの設定を行う
   ;;(setq url-proxy-services '(("http" . "localhost:8339")))
   ;;install-elispの関数を利用可能にする
-  (auto-install-compatibility-setup))
+;;  (auto-install-compatibility-setup))
 
 
 ;; coffee-mode インデントを2にする
@@ -64,6 +64,17 @@
 (autoload 'scss-mode "scss-mode")
 (setq scss-compile-at-save nil) ;; 自動コンパイルをオフにする
 (add-to-list 'auto-mode-alist '("¥¥.scss$" . scss-mode))
+
+;; yaml-mode
+(autoload 'yaml-mode "yaml-mode")
+(when (require 'yaml-mode nil t)
+  (add-to-list 'auto-mode-alist '("¥¥.yml$" . yaml-mode)))
+
+
+;; M-x の補完候補をミニバッファに表示
+;; http://www.bookshelf.jp/soft/meadow_27.html#SEC339
+(require
+ 'mcomplete) (turn-on-mcomplete-mode)
 
 
 ;;

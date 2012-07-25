@@ -8,7 +8,7 @@ eval "$(rbenv init -)"
 export CC=gcc-4.2
 
 alias -g be="bundle exec"
-alias -g E='emacs -nw'
+alias -g e='emacs -nw'
 alias -g rs="rspec"
 alias -g r="rails"
 
