@@ -10,6 +10,7 @@
 (set-buffer-file-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
 ;;; 履歴数を大きくする
 (setq history-length 10000)
