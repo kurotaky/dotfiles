@@ -1,4 +1,4 @@
-;; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
+;;-*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
 ;; スタートアップ時のメッセージを抑制
 (setq inhibit-startup-message t)
@@ -14,9 +14,10 @@
 
 ;;; 履歴数を大きくする
 (setq history-length 10000)
-
 ;;; 最近開いたファイルを保存する数を増やす
 (setq recentf-max-saved-items 10000)
+;;; ミニバッファの履歴を保存する
+(savehist-mode 1)
 
 
 ;; Emacs Lisp Package Archive（ELPA）──Emacs Lispパッケージマネーャ
@@ -60,7 +61,10 @@
 (add-hook 'coffee-mode-hook
           '(lambda() (coffee-custom)))
 
-;;scss mode
+;; rakefile編集時にruby-modeで開く
+(add-to-list 'auto-mode-alist '("[Rr]akefile" . ruby-mode))
+
+;; scss mode
 (setq exec-path (cons (expand-file-name "~/.gem/ruby/1.8/bin") exec-path))
 (autoload 'scss-mode "scss-mode")
 (setq scss-compile-at-save nil) ;; 自動コンパイルをオフにする
@@ -104,6 +108,18 @@
 ;; インデントはスペースで
 (setq-default indent-tabs-mode nil)
 
+
+;;
+;;dired
+;;______________________________________________________________________
+
+;;; diredを便利にする
+(require 'dired-x)
+
+;;; diredから"r"でファイル名をインライン編集する
+(require 'wdired)
+(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)
+
 ;;
 ;; keymaps
 ;;______________________________________________________________________
@@ -126,7 +142,7 @@
 ;; grep
 (define-key global-map (kbd "M-C-g") 'grep)
 
-;;; 再帰的にgrep
+;; 再帰的にgrep
 (require 'grep)
 (setq grep-command-before-query "grep -nH -r -e ")
 (defun grep-default-command ()
