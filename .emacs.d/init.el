@@ -159,3 +159,9 @@
     (car grep-command)))
 (setq grep-command (cons (concat grep-command-before-query " .")
                          (+ (length grep-command-before-query) 1)))
+
+;; anything.el
+(require 'anything)
+(setq my-anything-keybind (kbd "C-]"))
+(global-set-key my-anything-keybind 'anything-for-files)
+(define-key anything-map my-anything-keybind 'abort-recursive-edit)
