@@ -63,17 +63,18 @@
 
 ;; rakefile編集時にruby-modeで開く
 (add-to-list 'auto-mode-alist '("[Rr]akefile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rake" . ruby-mode))
 
 ;; scss mode
 (setq exec-path (cons (expand-file-name "~/.gem/ruby/1.8/bin") exec-path))
 (autoload 'scss-mode "scss-mode")
 (setq scss-compile-at-save nil) ;; 自動コンパイルをオフにする
-(add-to-list 'auto-mode-alist '("¥¥.scss$" . scss-mode))
+(add-to-list 'auto-mode-alist '("\\.scss$" . scss-mode))
 
 ;; yaml-mode
 (autoload 'yaml-mode "yaml-mode")
 (when (require 'yaml-mode nil t)
-  (add-to-list 'auto-mode-alist '("¥¥.yml$" . yaml-mode)))
+  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode)))
 
 
 ;; M-x の補完候補をミニバッファに表示
@@ -172,6 +173,7 @@
                          (+ (length grep-command-before-query) 1)))
 
 ;; anything.el
+;; 起動してウインドウ開いた時に キーバインドを再び押すとウインドウを閉じる
 (require 'anything)
 (setq my-anything-keybind (kbd "C-]"))
 (global-set-key my-anything-keybind 'anything-for-files)
