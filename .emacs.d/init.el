@@ -23,7 +23,7 @@
 ;; Emacs Lisp Package Archive（ELPA）──Emacs Lispパッケージマネーャ
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
 ;; load-path を追加する関数を定義
@@ -80,6 +80,17 @@
 ;; http://www.bookshelf.jp/soft/meadow_27.html#SEC339
 (require
  'mcomplete) (turn-on-mcomplete-mode)
+
+
+;; ------------------------------------------------------------------------
+;; @ auto-complete.el
+
+;; 自動補完機能
+;; https://github.com/m2ym/auto-complete
+(when (require 'auto-complete-config nil t)
+  (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+  (setq ac-ignore-case t)
+  (ac-config-default))
 
 
 ;;
