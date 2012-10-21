@@ -2,10 +2,15 @@ export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/.rbenv/bin:$PATH
 
 export PATH=$HOME/.powconfig:$PATH
-# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH=/usr/local/Cellar/emacs/HEAD/bin:$PATH
 
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(rbenv init -)"
+
 export CC=gcc-4.2
+
+#export PATH=$HOME/.phpenv/bin:$PATH
+#eval "$(phpenv init -)"
 
 alias -g be="bundle exec"
 alias -g e='emacs -nw'

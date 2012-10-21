@@ -178,3 +178,8 @@
 (setq my-anything-keybind (kbd "C-]"))
 (global-set-key my-anything-keybind 'anything-for-files)
 (define-key anything-map my-anything-keybind 'abort-recursive-edit)
+
+;; hit C-f again to create new files
+(ido-mode t)
+(setq ido-enable-flex-matching t)
+(smex)
