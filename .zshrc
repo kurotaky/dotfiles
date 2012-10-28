@@ -17,6 +17,16 @@ alias -g e='emacs -nw'
 alias -g rs="rspec"
 alias -g r="rails"
 
+
+# Patched ruby 1.9.3-p194 for 30% faster rails boot
+# https://gist.github.com/1688857
+export RUBY_HEAP_MIN_SLOTS=1000000
+export RUBY_HEAP_SLOTS_INCREMENT=1000000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=100000000
+export RUBY_HEAP_FREE_MIN=500000
+
+
 # users generic .zshrc file for zsh(1)
 
 ## Environment variable configuration
