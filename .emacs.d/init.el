@@ -207,6 +207,7 @@
 (define-key anything-map my-anything-keybind 'abort-recursive-edit)
 
 ;; hit C-f again to create new files
-(ido-mode t)
-(setq ido-enable-flex-matching t)
-(smex)
+;; (ido-mode t)
+;; (setq ido-enable-flex-matching t)
+;; (smex)
+(put 'dired-find-alternate-file 'disabled nil)
