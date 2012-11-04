@@ -37,19 +37,7 @@
             (normal-top-level-add-subdirs-to-load-path))))))
 
 ;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
-(add-to-load-path "elisp" "public_repos" "elpa")
-
-
-;;auto-installの設定
-;;(when(require 'auto-install nil t)
-  ;;インストールディレクトリを設定する
-;;  (setq auto-install-directory "~/.emacs.d/elisp/")
-  ;;EmacsWikiに登録されているelispの名前を取得する
-;;  (auto-install-update-emacswiki-package-name t)
-  ;;必要であればプロキシの設定を行う
-  ;;(setq url-proxy-services '(("http" . "localhost:8339")))
-  ;;install-elispの関数を利用可能にする
-;;  (auto-install-compatibility-setup))
+(add-to-load-path "elisp" "elpa")
 
 
 ;; coffee-mode インデントを2にする
@@ -67,6 +55,9 @@
 ;;; emacs 23以下の互換
 (when (< emacs-major-version 24)
     (defalias 'prog-mode 'fundamental-mode))
+
+;; php-mode
+(require 'php-mode)
 
 ;;; 適用する拡張子
 (add-to-list 'auto-mode-alist '("\\.phtml$"     . web-mode))
