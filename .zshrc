@@ -9,14 +9,19 @@ eval "$(rbenv init -)"
 
 export CC=gcc-4.2
 
-#export PATH=$HOME/.phpenv/bin:$PATH
-#eval "$(phpenv init -)"
+# phpenv
+if [ -f ${HOME}/.phpenv/bin/phpenv ]; then
+    export PATH=${PATH}:${HOME}/.phpenv/bin
+    eval "$(phpenv init -)"
+fi
 
 alias -g be="bundle exec"
 alias -g e='emacs -nw'
 alias -g rs="rspec"
 alias -g r="rails"
+alias -g t="tmux"
 
+alias diff='colordiff'
 
 # Patched ruby 1.9.3-p194 for 30% faster rails boot
 # https://gist.github.com/1688857
@@ -201,3 +206,7 @@ vcs_info_wrapper() {
     fi
 }
 RPROMPT=$'$(vcs_info_wrapper)'
+
+## ページャーを使いやすくする。
+## grepを使いやすくする。
+alias -g G='| grep'
