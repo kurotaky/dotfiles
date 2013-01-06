@@ -1,9 +1,21 @@
 export PATH=/usr/local/bin:$PATH
+
+# rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
 
+# pow
 export PATH=$HOME/.powconfig:$PATH
+
+# Sublime Text 2
+export PATH=$HOME/bin:$PATH
+
+# emacs
 export PATH=/usr/local/Cellar/emacs/HEAD/bin:$PATH
 
+# MAMP
+export PATH="/Applications/MAMP/bin/php/php5.3.14/bin:$PATH"
+
+# rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(rbenv init -)"
 
@@ -15,6 +27,7 @@ if [ -f ${HOME}/.phpenv/bin/phpenv ]; then
     eval "$(phpenv init -)"
 fi
 
+alias -g s="subl"
 alias -g be="bundle exec"
 alias -g e='emacs -nw'
 alias -g rs="rspec"
