@@ -15,7 +15,8 @@ call vundle#rc()
   Bundle 'glidenote/memolist.vim'
   Bundle 'Lokaltog/vim-powerline'
   Bundle 'thinca/vim-quickrun'
-"  Bundle 'scrooloose/syntastic'
+  Bundle 'altercation/vim-colors-solarized'
+  Bundle 'rodjek/vim-puppet'
 
 syntax on
 
@@ -26,6 +27,9 @@ if &t_Co > 2 || has("gui_running")
   " 検索結果文字列のハイライトを有効にする
   set hlsearch
 endif
+
+" コマンド、検索パターンを50個まで履歴に残す
+set history=50
 
 filetype on        " enable filetype detection
 filetype indent on " enable filetype-specific indenting
@@ -44,6 +48,7 @@ set scrolloff=3  " scroll before the border
 set laststatus=2 " Set the window to display a status line
 set t_Co=256     " 256 colors
 set visualbell   " no beep
+
 
 
 " Indent
@@ -85,6 +90,8 @@ set nowritebackup
 :set encoding=utf-8
 " :set fileencodings=utf-8
 :set fileencodings=euc-jp,sjis
+
+
 
 """ 編集、文書整形関連
 "

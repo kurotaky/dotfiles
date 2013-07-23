@@ -27,7 +27,14 @@ if [ -f ${HOME}/.phpenv/bin/phpenv ]; then
     eval "$(phpenv init -)"
 fi
 
-alias -g s="subl"
+## z easy jump dir
+. `brew --prefix`/etc/profile.d/z.sh
+    function precmd () {
+    _z --add "$(pwd -P)"
+}
+
+alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias -g be="bundle exec"
 alias -g e='emacs -nw'
 alias -g rs="rspec"
@@ -64,14 +71,14 @@ case ${UID} in
   PROMPT="%B%{${fg[green]}%}%/#%{${reset_color}%}%b "
   PROMPT2="%B%{${fg[green]}%}%_#%{${reset_color}%}%b "
   SPROMPT="%B%{${fg[green]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
     PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
   ;;
 *)
   PROMPT="%{${fg[green]}%}%/%%%{${reset_color}%} "
   PROMPT2="%{${fg[green]}%}%_%%%{${reset_color}%} "
   SPROMPT="%{${fg[green]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
-  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
     PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
   ;;
 esac
@@ -102,7 +109,7 @@ setopt nolistbeep
 
 ## Keybind configuration
 #
-# emacs like keybind (e.x. Ctrl-a goes to head of a line and Ctrl-e goes 
+# emacs like keybind (e.x. Ctrl-a goes to head of a line and Ctrl-e goes
 # to end of it)
 #
 bindkey -e
