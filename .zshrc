@@ -32,7 +32,6 @@ alias -g e='emacs -nw'
 alias -g rs="rspec"
 alias -g r="rails"
 alias -g t="tmux"
-alias -g g="git"
 
 alias diff='colordiff'
 
