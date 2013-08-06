@@ -55,7 +55,7 @@ autocmd FileType cs         setlocal sw=4 sts=4 ts=4 et
 autocmd FileType css        setlocal sw=4 sts=4 ts=4 noet
 autocmd FileType diff       setlocal sw=4 sts=4 ts=4 noet
 autocmd FileType eruby      setlocal sw=4 sts=4 ts=4 noet
-autocmd FileType html       setlocal sw=4 sts=4 ts=4 noet
+autocmd FileType html       setlocal sw=2 sts=2 ts=2 noet
 autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
 autocmd FileType javascript setlocal sw=4 sts=4 ts=4 noet
 autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
@@ -83,8 +83,8 @@ set nowritebackup
 
 
 :set encoding=utf-8
-" :set fileencodings=utf-8
-:set fileencodings=euc-jp,sjis
+:set fileencodings=utf-8
+":set fileencodings=euc-jp,sjis
 
 """ 編集、文書整形関連
 "
