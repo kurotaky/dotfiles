@@ -1,5 +1,5 @@
 " Vundle
-set nocompatible " we're running Vim, not Vi!
+set nocompatible
 filetype off     " disable file type detection
 
 set rtp+=~/.vim/vundle/
@@ -7,7 +7,7 @@ call vundle#rc()
 
   Bundle 'gmarik/vundle'
   Bundle "Shougo/unite.vim"
-  Bundle "rails.vim"
+  Bundle "tpope/vim-rails"
   Bundle "php.vim"
   Bundle 'JavaScript-syntax'
   Bundle 'ack.vim'
@@ -17,6 +17,7 @@ call vundle#rc()
   Bundle 'thinca/vim-quickrun'
   Bundle 'altercation/vim-colors-solarized'
   Bundle 'rodjek/vim-puppet'
+  Bundle 'vim-scripts/vim-auto-save'
 
 syntax on
 
@@ -48,8 +49,82 @@ set scrolloff=3  " scroll before the border
 set laststatus=2 " Set the window to display a status line
 set t_Co=256     " 256 colors
 set visualbell   " no beep
+set clipboard=unnamed
 
 
+" 文字コード, 改行コード {{{
+set encoding=utf-8
+set fileencodings=ucs_bom,utf8,ucs-2le,ucs-2
+set fileformats=unix,dos,mac
+
+" from ずんWiki http://www.kawaz.jp/pukiwiki/?vim#content_1_7
+" 文字コードの自動認識
+if &encoding !=# 'utf-8'
+  set encoding=japan
+  set fileencoding=japan
+endif
+if has('iconv')
+  let s:enc_euc = 'euc-jp'
+  let s:enc_jis = 'iso-2022-jp'
+  " iconvがeucJP-msに対応しているかをチェック
+  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'eucjp-ms'
+    let s:enc_jis = 'iso-2022-jp-3'
+  " iconvがJISX0213に対応しているかをチェック
+  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'euc-jisx0213'
+    let s:enc_jis = 'iso-2022-jp-3'
+  endif
+  " fileencodingsを構築
+  if &encoding ==# 'utf-8'
+    let s:fileencodings_default = &fileencodings
+    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+    let &fileencodings = s:fileencodings_default .','. &fileencodings
+    unlet s:fileencodings_default
+  else
+    let &fileencodings = &fileencodings .','. s:enc_jis
+    set fileencodings+=utf-8,ucs-2le,ucs-2
+    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
+      set fileencodings+=cp932
+      set fileencodings-=euc-jp
+      set fileencodings-=euc-jisx0213
+      set fileencodings-=eucjp-ms
+      let &encoding = s:enc_euc
+      let &fileencoding = s:enc_euc
+    else
+      let &fileencodings = &fileencodings .','. s:enc_euc
+    endif
+  endif
+  " 定数を処分
+  unlet s:enc_euc
+  unlet s:enc_jis
+endif
+" }}}
+
+
+""" 編集、文書整形関連
+"
+" backspaceキーの挙動を設定する
+" indent        : 行頭の空白の削除を許す
+" eol           : 改行の削除を許す
+" start         : 挿入モードの開始位置での削除を許す
+set backspace=indent,eol,start
+
+" 新しい行を直前の行と同じインデントにする
+set autoindent
+
+" Tab文字を画面上の見た目で何文字幅にするか設定
+set tabstop=4
+
+" cindentやautoindent時に挿入されるタブの幅
+set shiftwidth=4
+
+" Tabキー使用時にTabでは無くホワイトスペースを入れたい時に使用する
+" この値が0以外の時はtabstopの設定が無効になる
+set softtabstop=0
+
+" タブの入力を空白文字に置き換える
+set expandtab
 
 " Indent
 autocmd FileType apache     setlocal sw=4 sts=4 ts=4 et
@@ -60,7 +135,7 @@ autocmd FileType cs         setlocal sw=4 sts=4 ts=4 et
 autocmd FileType css        setlocal sw=4 sts=4 ts=4 noet
 autocmd FileType diff       setlocal sw=4 sts=4 ts=4 noet
 autocmd FileType eruby      setlocal sw=4 sts=4 ts=4 noet
-autocmd FileType html       setlocal sw=4 sts=4 ts=4 noet
+autocmd FileType html       setlocal sw=2 sts=2 ts=2 noet
 autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
 autocmd FileType javascript setlocal sw=4 sts=4 ts=4 noet
 autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
@@ -81,58 +156,26 @@ autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
 autocmd FileType scala      setlocal sw=2 sts=2 ts=2 et
 autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
 
-
 set nobackup   " do not keep backup files
 set noswapfile " do not write annoying intermediate swap files,
 set nowritebackup
 
+" デフォルトで有効にする
+let g:auto_save = 1
 
-:set encoding=utf-8
-" :set fileencodings=utf-8
-:set fileencodings=euc-jp,sjis
+""" Map
+" File encoding
+let mapleader = ' k'
+  " Encoding
+  nmap <Leader>u  :set fileencoding=utf-8       <CR>
+  nmap <Leader>e  :set fileencoding=euc-jp      <CR>
 
+" Memolist
+let mapleader = ' m'
+  nmap <Leader>n  :MemoNew<CR>
+  nmap <Leader>l  :MemoList<CR>
+  nmap <Leader>g  :MemoGrep<CR>
 
-
-""" 編集、文書整形関連
-"
-" backspaceキーの挙動を設定する
-" indent        : 行頭の空白の削除を許す
-" eol           : 改行の削除を許す
-" start         : 挿入モードの開始位置での削除を許す
-set backspace=indent,eol,start
-" " 新しい行を直前の行と同じインデントにする
-set autoindent
-" " Tab文字を画面上の見た目で何文字幅にするか設定
-set tabstop=4
-" " cindentやautoindent時に挿入されるタブの幅
-set shiftwidth=4
-" " Tabキー使用時にTabでは無くホワイトスペースを入れたい時に使用する
-" " この値が0以外の時はtabstopの設定が無効になる
-set softtabstop=0
-" " タブの入力を空白文字に置き換える
-set expandtab
-
-" Encoding {{{
-  let mapleader = ' k'
-  nnoremap <Leader>u  :set fileencoding=utf-8       <CR>
-  nnoremap <Leader>6  :set fileencoding=ucs-2le     <CR>
-  nnoremap <Leader>e  :set fileencoding=euc-jp      <CR>
-  nnoremap <Leader>s  :set fileencoding=cp932       <CR>
-  nnoremap <Leader>j  :set fileencoding=iso-2022-jp <CR>
-  nnoremap <Leader>n  :set fileformat=unix          <CR>
-  nnoremap <Leader>r  :set fileformat=mac           <CR>
-  nnoremap <Leader>rn :set fileformat=dos           <CR>
-  let mapleader = ' r'
-  nnoremap <Leader>u  :e ++enc=utf-8       <CR>
-  nnoremap <Leader>6  :e ++enc=ucs-2le     <CR>
-  nnoremap <Leader>e  :e ++enc=euc-jp      <CR>
-  nnoremap <Leader>s  :e ++enc=cp932       <CR>
-  nnoremap <Leader>j  :e ++enc=iso-2022-jp <CR>
-  nnoremap <Leader>n  :e ++fileformat=unix <CR>
-  nnoremap <Leader>r  :e ++fileformat=mac  <CR>
-  nnoremap <Leader>rn :e ++fileformat=dos  <CR>
-" }}}
-
-map <Leader>mn  :MemoNew<CR>
-map <Leader>ml  :MemoList<CR>
-map <Leader>mg  :MemoGrep<CR>
+" Unite
+let mapleader = ' u'
+  nmap <Leader>b :Unite buffer<CR>

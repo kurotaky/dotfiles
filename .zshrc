@@ -13,44 +13,22 @@ export PATH=$HOME/bin:$PATH
 export PATH=/usr/local/Cellar/emacs/HEAD/bin:$PATH
 
 # MAMP
-export PATH="/Applications/MAMP/bin/php/php5.3.14/bin:$PATH"
+# export PATH="/Applications/MAMP/bin/php/php5.3.14/bin:$PATH"
 
 # rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(rbenv init -)"
 
-export CC=gcc-4.2
+# export CC=gcc-4.2
 
-# phpenv
-if [ -f ${HOME}/.phpenv/bin/phpenv ]; then
-    export PATH=${PATH}:${HOME}/.phpenv/bin
-    eval "$(phpenv init -)"
-fi
-
-## z easy jump dir
-. `brew --prefix`/etc/profile.d/z.sh
-    function precmd () {
-    _z --add "$(pwd -P)"
-}
-
-alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias vim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias -g be="bundle exec"
 alias -g e='emacs -nw'
 alias -g rs="rspec"
 alias -g r="rails"
 alias -g t="tmux"
+alias -g vim='/Applications/MacVim.app/Contents/MacOS/vim'
 
 alias diff='colordiff'
-
-# Patched ruby 1.9.3-p194 for 30% faster rails boot
-# https://gist.github.com/1688857
-export RUBY_HEAP_MIN_SLOTS=1000000
-export RUBY_HEAP_SLOTS_INCREMENT=1000000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
-export RUBY_GC_MALLOC_LIMIT=100000000
-export RUBY_HEAP_FREE_MIN=500000
-
 
 # users generic .zshrc file for zsh(1)
 
