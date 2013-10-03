@@ -54,7 +54,7 @@ set clipboard=unnamed
 
 " 文字コード, 改行コード {{{
 set encoding=utf-8
-set fileencodings=ucs_bom,utf8,ucs-2le,ucs-2
+set fileencodings=ucs_bom,utf8,euc-jp
 set fileformats=unix,dos,mac
 
 " from ずんWiki http://www.kawaz.jp/pukiwiki/?vim#content_1_7
