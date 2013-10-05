@@ -24,7 +24,7 @@ eval "$(rbenv init -)"
 alias -g be="bundle exec"
 alias -g e='emacs -nw'
 alias -g rs="rspec"
-alias -g r="rails"
+alias -g ra="rails"
 alias -g t="tmux"
 alias -g vim='/Applications/MacVim.app/Contents/MacOS/vim'
 
