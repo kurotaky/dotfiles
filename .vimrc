@@ -11,11 +11,11 @@ call vundle#rc()
   Bundle 'JavaScript-syntax'
   Bundle 'ack.vim'
   Bundle 'glidenote/memolist.vim'
-  Bundle 'Lokaltog/vim-powerline'
   Bundle 'thinca/vim-quickrun'
   Bundle 'rodjek/vim-puppet'
   Bundle 'vim-scripts/vim-auto-save'
   Bundle 'scrooloose/nerdtree'
+  Bundle 'itchyny/lightline.vim'
 
 syntax on
 
@@ -176,6 +176,10 @@ let mapleader = ' m'
 " Unite
 let mapleader = ' u'
   nnoremap <Leader>b :Unite buffer<CR>
+
+" NERDTree
+let mapleader = ' n'
+  nnoremap <Leader>t :NERDTree<CR>
 
 " 検索のハイライトを消す
   nnoremap  <C-c><C-c> :<C-u>nohlsearch<cr><Esc>
