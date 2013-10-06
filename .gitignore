@@ -1,0 +1,10 @@
+#*#
+.*~
+*~
+.#*
+.DS_Store
+*.sw[po]
+tags
+.vim/bundle/*
+.ruby-version
+.vimfuzzyfinder
