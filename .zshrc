@@ -50,14 +50,14 @@ case ${UID} in
   PROMPT="%B%{${fg[green]}%}%/#%{${reset_color}%}%b "
   PROMPT2="%B%{${fg[green]}%}%_#%{${reset_color}%}%b "
   SPROMPT="%B%{${fg[green]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
     PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
   ;;
 *)
   PROMPT="%{${fg[green]}%}%/%%%{${reset_color}%} "
   PROMPT2="%{${fg[green]}%}%_%%%{${reset_color}%} "
   SPROMPT="%{${fg[green]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
-  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
     PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
   ;;
 esac
@@ -88,7 +88,7 @@ setopt nolistbeep
 
 ## Keybind configuration
 #
-# emacs like keybind (e.x. Ctrl-a goes to head of a line and Ctrl-e goes 
+# emacs like keybind (e.x. Ctrl-a goes to head of a line and Ctrl-e goes
 # to end of it)
 #
 bindkey -e

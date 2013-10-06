@@ -14,6 +14,8 @@ call vundle#rc()
   Bundle 'glidenote/memolist.vim'
   Bundle 'Lokaltog/vim-powerline'
   Bundle 'thinca/vim-quickrun'
+  Bundle 'altercation/vim-colors-solarized'
+  Bundle 'rodjek/vim-puppet'
   Bundle 'vim-scripts/vim-auto-save'
   Bundle 'scrooloose/nerdtree'
 
@@ -26,6 +28,9 @@ if &t_Co > 2 || has("gui_running")
   " 検索結果文字列のハイライトを有効にする
   set hlsearch
 endif
+
+" コマンド、検索パターンを50個まで履歴に残す
+set history=50
 
 filetype on        " enable filetype detection
 filetype indent on " enable filetype-specific indenting
@@ -49,7 +54,7 @@ set clipboard=unnamed
 
 " 文字コード, 改行コード {{{
 set encoding=utf-8
-set fileencodings=ucs_bom,utf8,ucs-2le,ucs-2
+set fileencodings=ucs_bom,utf8,euc-jp
 set fileformats=unix,dos,mac
 
 " from ずんWiki http://www.kawaz.jp/pukiwiki/?vim#content_1_7
