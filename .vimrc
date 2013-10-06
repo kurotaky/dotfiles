@@ -10,11 +10,9 @@ call vundle#rc()
   Bundle "php.vim"
   Bundle 'JavaScript-syntax'
   Bundle 'ack.vim'
-  Bundle 'Shougo/vimfiler'
   Bundle 'glidenote/memolist.vim'
   Bundle 'Lokaltog/vim-powerline'
   Bundle 'thinca/vim-quickrun'
-  Bundle 'altercation/vim-colors-solarized'
   Bundle 'rodjek/vim-puppet'
   Bundle 'vim-scripts/vim-auto-save'
   Bundle 'scrooloose/nerdtree'
@@ -49,7 +47,6 @@ set scrolloff=3  " scroll before the border
 set laststatus=2 " Set the window to display a status line
 set t_Co=256     " 256 colors
 set visualbell   " no beep
-set clipboard=unnamed
 
 
 " 文字コード, 改行コード {{{
@@ -165,17 +162,26 @@ let g:auto_save = 1
 
 """ Map
 " File encoding
-let mapleader = ' k'
+let mapleader = ' f'
   " Encoding
-  nmap <Leader>u  :set fileencoding=utf-8       <CR>
-  nmap <Leader>e  :set fileencoding=euc-jp      <CR>
+  nnoremap <Leader>u  :set fileencoding=utf-8       <CR>
+  nnoremap <Leader>e  :set fileencoding=euc-jp      <CR>
 
 " Memolist
 let mapleader = ' m'
-  nmap <Leader>n  :MemoNew<CR>
-  nmap <Leader>l  :MemoList<CR>
-  nmap <Leader>g  :MemoGrep<CR>
+  nnoremap <Leader>n  :MemoNew<CR>
+  nnoremap <Leader>l  :MemoList<CR>
+  nnoremap <Leader>g  :MemoGrep<CR>
 
 " Unite
 let mapleader = ' u'
-  nmap <Leader>b :Unite buffer<CR>
+  nnoremap <Leader>b :Unite buffer<CR>
+
+" 検索のハイライトを消す
+  nnoremap  <C-c><C-c> :<C-u>nohlsearch<cr><Esc>
+
+" for PHP
+  inoremap <C-z><C-d> Zend_Debug::dump(); exit;
+  inoremap <C-v><C-d> var_dump(); exit;
+  inoremap <C-a> ->
+  inoremap <C-a><C-a> =>
