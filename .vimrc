@@ -1,8 +1,7 @@
 " Vundle
 set nocompatible
 filetype off     " disable file type detection
-
-set rtp+=~/.vim/vundle/
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
   Bundle 'gmarik/vundle'
