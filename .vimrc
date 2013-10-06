@@ -16,6 +16,7 @@ call vundle#rc()
   Bundle 'Lokaltog/vim-powerline'
   Bundle 'thinca/vim-quickrun'
   Bundle 'vim-scripts/vim-auto-save'
+  Bundle 'scrooloose/nerdtree'
 
 syntax on
 
