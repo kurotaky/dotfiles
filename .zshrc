@@ -209,3 +209,6 @@ RPROMPT=$'$(vcs_info_wrapper)'
 ## ページャーを使いやすくする。
 ## grepを使いやすくする。
 alias -g G='| grep'
+
+# .zshrc.localが存在する場合は読み込む
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
