@@ -28,7 +28,6 @@ alias -g r="rails"
 alias -g t="tmux"
 alias -g vim='/Applications/MacVim.app/Contents/MacOS/vim'
 alias -g sz="source ~/.zshrc"
-alias -g beneb ="bundle exec nebel --base-url / --no-clean-dir --archive"
 
 alias diff='colordiff'
 
