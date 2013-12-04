@@ -21,6 +21,9 @@ eval "$(rbenv init -)"
 
 # export CC=gcc-4.2
 
+# hub alias
+function git(){hub "$@"}
+
 alias -g be="bundle exec"
 alias -g e='emacs -nw'
 alias -g ber="bundle exec rspec spec"
