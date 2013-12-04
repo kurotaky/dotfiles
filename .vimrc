@@ -16,6 +16,7 @@ call vundle#rc()
   Bundle 'vim-scripts/vim-auto-save'
   Bundle 'scrooloose/nerdtree'
   Bundle 'itchyny/lightline.vim'
+  Bundle 'kchmck/vim-coffee-script'
 
 syntax on
 
