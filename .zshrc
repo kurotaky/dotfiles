@@ -33,6 +33,7 @@ alias -g vim='/Applications/MacVim.app/Contents/MacOS/vim'
 alias -g sz="source ~/.zshrc"
 
 alias diff='colordiff'
+alias gist='gist -c -o -p'
 
 # users generic .zshrc file for zsh(1)
 
