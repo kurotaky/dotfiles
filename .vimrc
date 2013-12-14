@@ -17,6 +17,7 @@ call vundle#rc()
   Bundle 'scrooloose/nerdtree'
   Bundle 'itchyny/lightline.vim'
   Bundle 'kchmck/vim-coffee-script'
+  Bundle 'tyru/open-browser.vim'
 
 syntax on
 
@@ -190,3 +191,10 @@ let mapleader = ' n'
   inoremap <C-v><C-d> var_dump(); exit;
   inoremap <C-a> ->
   inoremap <C-a><C-a> =>
+
+" open-browser.vim
+" http://vim-users.jp/2011/08/hack225/
+
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+  nmap gx <Plug>(openbrowser-smart-search)
+  vmap gx <Plug>(openbrowser-smart-search)
