@@ -18,7 +18,6 @@ install mongodb
 install mysql
 install openssl
 install phantomjs
-install r
 install redis
 install rsync
 install sqlite
