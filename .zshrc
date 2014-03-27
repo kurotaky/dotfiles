@@ -19,6 +19,10 @@ export PATH=/usr/local/Cellar/emacs/HEAD/bin:$PATH
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(rbenv init -)"
 
+# phpenv
+export PATH="$HOME/.phpenv/bin:$PATH"
+eval "$(phpenv init - zsh)"
+
 # export CC=gcc-4.2
 
 # hub alias
