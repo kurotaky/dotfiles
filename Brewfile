@@ -4,6 +4,7 @@ upgrade
 tap phinze/homebrew-cask
 tap homebrew/versions
 tap caskroom/homebrew-versions
+tap sanemat/font
 
 install brew-cask
 
@@ -34,6 +35,7 @@ cask install dropbox
 cask install firefox
 cask install google-chrome
 cask install iterm2
+cask install java
 cask install keyremap4macbook
 cask install limechat
 cask install macvim-kaoriya
