@@ -18,8 +18,10 @@ install mongodb
 install mysql
 install openssl
 install phantomjs
+install rbenv
 install redis
 install rsync
+install ruby-build
 install sqlite
 install tig
 install tmux
@@ -30,6 +32,7 @@ install zsh
 cask install alfred
 cask install coteditor
 cask install cyberduck
+cask install dash
 cask install dropbox
 cask install firefox
 cask install google-chrome
