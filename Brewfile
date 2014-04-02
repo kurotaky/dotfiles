@@ -11,8 +11,8 @@ install brew-cask
 install ag
 install curl
 install git
+install graphviz
 install go
-install httpd
 install hub
 install mongodb
 install mysql
@@ -20,7 +20,6 @@ install openssl
 install phantomjs
 install rbenv
 install redis
-install rsync
 install ruby-build
 install sqlite
 install tig
@@ -36,6 +35,7 @@ cask install dash
 cask install dropbox
 cask install firefox
 cask install google-chrome
+cask install google-japanese-ime
 cask install iterm2
 cask install java
 cask install keyremap4macbook
@@ -48,6 +48,5 @@ cask install skype
 cask install sublime-text
 cask install thunderbird
 cask install vagrant
-cask install virtualbox
 
 cleanup
