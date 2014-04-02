@@ -33,7 +33,7 @@ alias -g e='emacs -nw'
 alias -g ber="bundle exec rspec spec"
 alias -g r="rails"
 alias -g t="tmux"
-alias -g vim='/Applications/MacVim.app/Contents/MacOS/vim'
+alias -g vim='~/Applications/MacVim.app/Contents/MacOS/Vim'
 alias -g sz="source ~/.zshrc"
 
 alias diff='colordiff'
