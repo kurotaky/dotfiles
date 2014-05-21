@@ -30,7 +30,7 @@ function git(){hub "$@"}
 
 alias -g be="bundle exec"
 alias -g e='emacs -nw'
-alias -g ber="bundle exec rspec spec"
+alias -g ber="bundle exec rspec"
 alias -g r="rails"
 alias -g t="tmux"
 alias -g vim='~/Applications/MacVim.app/Contents/MacOS/Vim'
