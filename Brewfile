@@ -5,6 +5,7 @@ tap phinze/homebrew-cask
 tap homebrew/versions
 tap caskroom/homebrew-versions
 tap sanemat/font
+tap josegonzalez/homebrew-php
 
 install brew-cask
 
@@ -18,6 +19,8 @@ install mongodb
 install mysql
 install openssl
 install phantomjs
+install --HEAD phpenv
+install --HEAD php-build
 install rbenv
 install redis
 install ruby-build

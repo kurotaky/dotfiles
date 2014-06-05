@@ -35,6 +35,7 @@ alias -g r="rails"
 alias -g t="tmux"
 alias -g vim='~/Applications/MacVim.app/Contents/MacOS/Vim'
 alias -g sz="source ~/.zshrc"
+alias -g a="atom"
 
 alias diff='colordiff'
 alias gist='gist -c -o -p'

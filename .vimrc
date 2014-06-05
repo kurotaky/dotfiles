@@ -50,7 +50,7 @@ set scrolloff=3  " scroll before the border
 set laststatus=2 " Set the window to display a status line
 set t_Co=256     " 256 colors
 set visualbell   " no beep
-
+set noundofile
 
 " 文字コード, 改行コード {{{
 set encoding=utf-8
