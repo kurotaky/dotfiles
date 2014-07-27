@@ -19,6 +19,7 @@ call vundle#rc()
   Bundle 'itchyny/lightline.vim'
   Bundle 'kchmck/vim-coffee-script'
   Bundle 'tyru/open-browser.vim'
+  Bundle 'hail2u/vim-css3-syntax'
 
 syntax on
 
@@ -117,7 +118,7 @@ set autoindent
 set tabstop=4
 
 " cindentやautoindent時に挿入されるタブの幅
-set shiftwidth=4
+set shiftwidth=2
 
 " Tabキー使用時にTabでは無くホワイトスペースを入れたい時に使用する
 " この値が0以外の時はtabstopの設定が無効になる
@@ -135,7 +136,7 @@ autocmd FileType cs         setlocal sw=4 sts=4 ts=4 et
 autocmd FileType css        setlocal sw=4 sts=4 ts=4 noet
 autocmd FileType diff       setlocal sw=4 sts=4 ts=4 noet
 autocmd FileType eruby      setlocal sw=4 sts=4 ts=4 noet
-autocmd FileType html       setlocal sw=2 sts=2 ts=2 noet
+autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
 autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
 autocmd FileType javascript setlocal sw=4 sts=4 ts=4 noet
 autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
