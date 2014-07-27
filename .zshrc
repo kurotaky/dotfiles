@@ -1,5 +1,7 @@
 export PATH=/usr/local/bin:$PATH
 
+export EDITOR=vim
+
 # rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
 
@@ -221,3 +223,25 @@ alias -g G='| grep'
 
 # .zshrc.localが存在する場合は読み込む
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+
+#pcd(peco-cd)
+PECO_CD_FILE=$HOME/.peco/.peco-cd #お気に入りを記録するファイル
+function pcd() {
+    if [ $1 ] && [ $1 = "add" ]; then
+        if [ $2 ]; then
+            ADD_DIR=$2
+            if [ $2 = "." ]; then
+                ADD_DIR=$(pwd)
+            fi
+            echo "add $ADD_DIR to $PECO_CD_FILE"
+            echo $ADD_DIR >> $PECO_CD_FILE
+        fi
+    elif [ $1 ] && [ $1 = "edit" ]; then
+        if [ $EDITOR ]; then
+            $EDITOR $PECO_CD_FILE
+        fi
+    else
+        cd $(cat $PECO_CD_FILE | peco)
+    fi
+}
