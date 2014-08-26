@@ -6,6 +6,7 @@ tap homebrew/versions
 tap caskroom/homebrew-versions
 tap sanemat/font
 tap josegonzalez/homebrew-php
+tap peco/peco
 
 install brew-cask
 
@@ -15,9 +16,11 @@ install git
 install graphviz
 install go
 install hub
+install migemogrep
 install mongodb
 install mysql
 install openssl
+install peco
 install phantomjs
 install --HEAD phpenv
 install --HEAD php-build
