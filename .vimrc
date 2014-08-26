@@ -20,6 +20,10 @@ call vundle#rc()
   Bundle 'kchmck/vim-coffee-script'
   Bundle 'tyru/open-browser.vim'
   Bundle 'hail2u/vim-css3-syntax'
+  Bundle 'leafgarland/typescript-vim'
+  Bundle 'clausreinke/typescript-tools'
+  Bundle 'tpope/vim-pathogen'
+  Bundle 'scrooloose/syntastic'
 
 syntax on
 
@@ -224,3 +228,7 @@ let mapleader = ' n'
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
   nmap gx <Plug>(openbrowser-smart-search)
   vmap gx <Plug>(openbrowser-smart-search)
+
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
