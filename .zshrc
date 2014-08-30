@@ -25,6 +25,9 @@ eval "$(rbenv init -)"
 export PATH="$HOME/.phpenv/bin:$PATH"
 eval "$(phpenv init - zsh)"
 
+# plenv
+eval "$(plenv init -)"
+
 # export CC=gcc-4.2
 
 # hub alias
