@@ -1,29 +1,32 @@
 " Vundle
 set nocompatible
 filetype off     " disable file type detection
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
-  Bundle 'gmarik/vundle'
-  Bundle "Shougo/unite.vim"
-  Bundle 'Shougo/vimproc'
-  Bundle "tpope/vim-rails"
-  Bundle "php.vim"
-  Bundle 'JavaScript-syntax'
-  Bundle 'ack.vim'
-  Bundle 'glidenote/memolist.vim'
-  Bundle 'thinca/vim-quickrun'
-  Bundle 'rodjek/vim-puppet'
-  Bundle 'vim-scripts/vim-auto-save'
-  Bundle 'scrooloose/nerdtree'
-  Bundle 'itchyny/lightline.vim'
-  Bundle 'kchmck/vim-coffee-script'
-  Bundle 'tyru/open-browser.vim'
-  Bundle 'hail2u/vim-css3-syntax'
-  Bundle 'leafgarland/typescript-vim'
-  Bundle 'clausreinke/typescript-tools'
-  Bundle 'tpope/vim-pathogen'
-  Bundle 'scrooloose/syntastic'
+call plug#begin('~/.vim/plugged')
+
+  Plug 'Shougo/unite.vim'
+  Plug 'Shougo/vimproc'
+  Plug 'tpope/vim-rails'
+  Plug 'php.vim'
+  Plug 'JavaScript-syntax'
+  Plug 'ack.vim'
+  Plug 'glidenote/memolist.vim'
+  Plug 'thinca/vim-quickrun'
+  Plug 'rodjek/vim-puppet'
+  Plug 'vim-scripts/vim-auto-save'
+  Plug 'scrooloose/nerdtree'
+  Plug 'itchyny/lightline.vim'
+  Plug 'kchmck/vim-coffee-script'
+  Plug 'tyru/open-browser.vim'
+  Plug 'hail2u/vim-css3-syntax'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'clausreinke/typescript-tools'
+  Plug 'tpope/vim-pathogen'
+  Plug 'scrooloose/syntastic'
+  Plug 'tpope/vim-endwise'
+  Plug 'Shougo/neomru.vim'
+
+call plug#end()
 
 syntax on
 
@@ -182,15 +185,34 @@ let mapleader = ' m'
   nnoremap <Leader>g  :MemoGrep<CR>
 
 " Unite
-let mapleader = ' ub'
-  nnoremap <Leader>b :Unite buffer<CR>
-
+""""""""""""""""""""""""""""""""""""
 " insert modeで開始
 " let g:unite_enable_start_insert = 1
 
 " 大文字小文字を区別しない
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
+
+" バッファ一覧
+noremap <C-P> :Unite buffer<CR>
+" ファイル一覧
+noremap <C-N> :Unite -buffer-name=file file<CR>
+" 最近使ったファイルの一覧
+noremap <C-Z> :Unite file_mru<CR>
+" sourcesを「今開いているファイルのディレクトリ」とする
+noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 " grep検索
 nnoremap <silent> ug  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
@@ -232,3 +254,6 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
+
+
+exe "set rtp+=" . globpath(substitute($GOPATH, (has('win32')||has('win64'))?';':':',',','g'), 'src/github.com/peco/migemogrep/misc/vim')

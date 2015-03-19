@@ -41,6 +41,7 @@ alias -g t="tmux"
 alias -g vim='~/Applications/MacVim.app/Contents/MacOS/Vim'
 alias -g sz="source ~/.zshrc"
 alias -g a="atom"
+alias -g brs="bin/rspec"
 
 alias diff='colordiff'
 alias gist='gist -c -o -p'
@@ -248,3 +249,9 @@ function pcd() {
         cd $(cat $PECO_CD_FILE | peco)
     fi
 }
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+### https://github.com/rupa/z
+. `brew --prefix`/etc/profile.d/z.sh

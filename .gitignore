@@ -5,7 +5,7 @@
 .DS_Store
 *.sw[po]
 tags
-.vim/bundle/*
+.vim/plugged/*
 .ruby-version
 .vimfuzzyfinder
 .zshrc.local
