@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/syntastic'
   Plug 'tpope/vim-endwise'
   Plug 'Shougo/neomru.vim'
+  Plug 'bronson/vim-trailing-whitespace'
 
 call plug#end()
 
