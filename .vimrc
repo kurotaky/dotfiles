@@ -169,8 +169,11 @@ set nobackup   " do not keep backup files
 set noswapfile " do not write annoying intermediate swap files,
 set nowritebackup
 
-" デフォルトで有効にする
+" デフォルトで有効
 let g:auto_save = 1
+
+" do not save while in insert mode
+let g:auto_save_in_insert_mode = 0
 
 """ Map
 " File encoding
