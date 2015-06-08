@@ -26,19 +26,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-endwise'
   Plug 'Shougo/neomru.vim'
   Plug 'bronson/vim-trailing-whitespace'
+  Plug 'pangloss/vim-javascript'
+  Plug 'mxw/vim-jsx'
 
 call plug#end()
 
 syntax on
-
-" ハイライト
-if &t_Co > 2 || has("gui_running")
-  " シンタックスハイライトを有効にする
-  syntax on
-  " 検索結果文字列のハイライトを有効にする
-  set hlsearch
-endif
-
 " コマンド、検索パターンを50個まで履歴に残す
 set history=50
 
@@ -135,36 +128,6 @@ set softtabstop=0
 " タブの入力を空白文字に置き換える
 set expandtab
 
-" Indent
-autocmd FileType apache     setlocal sw=4 sts=4 ts=4 et
-autocmd FileType aspvbs     setlocal sw=4 sts=4 ts=4 noet
-autocmd FileType c          setlocal sw=4 sts=4 ts=4 et
-autocmd FileType cpp        setlocal sw=4 sts=4 ts=4 et
-autocmd FileType cs         setlocal sw=4 sts=4 ts=4 et
-autocmd FileType css        setlocal sw=4 sts=4 ts=4 noet
-autocmd FileType diff       setlocal sw=4 sts=4 ts=4 noet
-autocmd FileType eruby      setlocal sw=4 sts=4 ts=4 noet
-autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
-autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
-autocmd FileType javascript setlocal sw=4 sts=4 ts=4 noet
-autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
-autocmd FileType php        setlocal sw=4 sts=4 ts=4 et
-autocmd FileType python     setlocal sw=4 sts=4 ts=4 et
-autocmd FileType ruby       setlocal sw=2 sts=2 ts=2 et
-autocmd FileType haml       setlocal sw=2 sts=2 ts=2 et
-autocmd FileType eruby      setlocal sw=2 sts=2 ts=2 et
-autocmd FileType sh         setlocal sw=4 sts=4 ts=4 et
-autocmd FileType sql        setlocal sw=4 sts=4 ts=4 et
-autocmd FileType vb         setlocal sw=4 sts=4 ts=4 noet
-autocmd FileType vim        setlocal sw=2 sts=2 ts=2 et
-autocmd FileType wsh        setlocal sw=4 sts=4 ts=4 et
-autocmd FileType xhtml      setlocal sw=4 sts=4 ts=4 noet
-autocmd FileType xml        setlocal sw=4 sts=4 ts=4 noet
-autocmd FileType yaml       setlocal sw=2 sts=2 ts=2 et
-autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
-autocmd FileType scala      setlocal sw=2 sts=2 ts=2 et
-autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
-
 set nobackup   " do not keep backup files
 set noswapfile " do not write annoying intermediate swap files,
 set nowritebackup
@@ -256,8 +219,5 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
   vmap gx <Plug>(openbrowser-smart-search)
 
 execute pathogen#infect()
-syntax on
-filetype plugin indent on
-
 
 exe "set rtp+=" . globpath(substitute($GOPATH, (has('win32')||has('win64'))?';':':',',','g'), 'src/github.com/peco/migemogrep/misc/vim')

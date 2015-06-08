@@ -5,30 +5,19 @@ export EDITOR=vim
 # rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
 
-# pow
-export PATH=$HOME/.powconfig:$PATH
-
-# Sublime Text 2
-export PATH=$HOME/bin:$PATH
-
 # emacs
 export PATH=/usr/local/Cellar/emacs/HEAD/bin:$PATH
-
-# MAMP
-# export PATH="/Applications/MAMP/bin/php/php5.3.14/bin:$PATH"
 
 # rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(rbenv init -)"
 
-# phpenv
-export PATH="$HOME/.phpenv/bin:$PATH"
-eval "$(phpenv init - zsh)"
-
 # plenv
 eval "$(plenv init -)"
 
-# export CC=gcc-4.2
+# GO
+export GOPATH=$HOME
+export PATH=$PATH:$GOPATH/bin
 
 # hub alias
 function git(){hub "$@"}
@@ -45,8 +34,6 @@ alias -g brs="bin/rspec"
 
 alias diff='colordiff'
 alias gist='gist -c -o -p'
-
-# users generic .zshrc file for zsh(1)
 
 ## Environment variable configuration
 #
@@ -255,3 +242,15 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 ### https://github.com/rupa/z
 . `brew --prefix`/etc/profile.d/z.sh
+
+### http://weblog.bulknews.net/post/89635306479/ghq-peco-percol
+function peco-src () {
+  local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-src
+bindkey '^]' peco-src
