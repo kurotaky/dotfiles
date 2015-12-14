@@ -2,6 +2,13 @@ export PATH=/usr/local/bin:$PATH
 
 export EDITOR=vim
 
+# https://gist.github.com/udzura/55a523cbce494b9fd004
+precmd() {
+  if echo $PATH | grep -qE '\./|\.\./'; then
+    echo -e "\e[31m\e[1mWARNING! Current path or relative path is included in your \$PATH:\n\e[35m${PATH}\e[0m"
+  fi
+}
+
 # rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
 
@@ -15,6 +22,12 @@ eval "$(rbenv init -)"
 # plenv
 eval "$(plenv init -)"
 
+# phpbrew
+[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
+
+# https://github.com/hokaccha/nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
 # GO
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
@@ -27,13 +40,23 @@ alias -g e='emacs -nw'
 alias -g ber="bundle exec rspec"
 alias -g r="rails"
 alias -g t="tmux"
-alias -g vim='~/Applications/MacVim.app/Contents/MacOS/Vim'
+# alias -g vim='~/Applications/MacVim.app/Contents/MacOS/Vim'
+alias -g vim=atom
 alias -g sz="source ~/.zshrc"
 alias -g a="atom"
 alias -g brs="bin/rspec"
 
 alias diff='colordiff'
 alias gist='gist -c -o -p'
+
+alias ghl='cd $(ghq list -p | peco)'
+alias gho='gh-open $(ghq list -p | peco)'
+
+alias ga='git add'
+alias gci='git commit -v'
+alias gs='git status'
+alias gd='git diff'
+alias gdc='git diff --cached'
 
 ## Environment variable configuration
 #
@@ -180,11 +203,6 @@ kterm*|xterm*)
   ;;
 esac
 
-## load user .zshrc configuration file
-#
-[ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
-
-
 
 ###################################################
 ### get a prompt which indicates Git-branch
@@ -215,42 +233,11 @@ alias -g G='| grep'
 # .zshrc.localが存在する場合は読み込む
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-
-#pcd(peco-cd)
-PECO_CD_FILE=$HOME/.peco/.peco-cd #お気に入りを記録するファイル
-function pcd() {
-    if [ $1 ] && [ $1 = "add" ]; then
-        if [ $2 ]; then
-            ADD_DIR=$2
-            if [ $2 = "." ]; then
-                ADD_DIR=$(pwd)
-            fi
-            echo "add $ADD_DIR to $PECO_CD_FILE"
-            echo $ADD_DIR >> $PECO_CD_FILE
-        fi
-    elif [ $1 ] && [ $1 = "edit" ]; then
-        if [ $EDITOR ]; then
-            $EDITOR $PECO_CD_FILE
-        fi
-    else
-        cd $(cat $PECO_CD_FILE | peco)
-    fi
-}
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 ### https://github.com/rupa/z
 . `brew --prefix`/etc/profile.d/z.sh
 
-### http://weblog.bulknews.net/post/89635306479/ghq-peco-percol
-function peco-src () {
-  local selected_dir=$(ghq list --full-path | peco --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
-    zle accept-line
-  fi
-  zle clear-screen
-}
-zle -N peco-src
-bindkey '^]' peco-src
+# added by travis gem
+[ -f /Users/usr0600244/.travis/travis.sh ] && source /Users/usr0600244/.travis/travis.sh

@@ -28,6 +28,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'pangloss/vim-javascript'
   Plug 'mxw/vim-jsx'
+  Plug 'keith/swift.vim'
+  Plug 'elixir-lang/vim-elixir'
 
 call plug#end()
 
