@@ -19,9 +19,6 @@ export PATH=/usr/local/Cellar/emacs/HEAD/bin:$PATH
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(rbenv init -)"
 
-# plenv
-eval "$(plenv init -)"
-
 # phpbrew
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
@@ -232,6 +229,3 @@ alias -g G='| grep'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-### https://github.com/rupa/z
-. `brew --prefix`/etc/profile.d/z.sh
