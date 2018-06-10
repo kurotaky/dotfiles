@@ -40,10 +40,7 @@ alias -g e='emacs -nw'
 alias -g ber="bundle exec rspec"
 alias -g r="rails"
 alias -g t="tmux"
-# alias -g vim='~/Applications/MacVim.app/Contents/MacOS/Vim'
-alias -g vim=atom
 alias -g sz="source ~/.zshrc"
-alias -g a="atom"
 alias -g brs="bin/rspec"
 
 alias diff='colordiff'
@@ -238,6 +235,3 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 ### https://github.com/rupa/z
 . `brew --prefix`/etc/profile.d/z.sh
-
-# added by travis gem
-[ -f /Users/usr0600244/.travis/travis.sh ] && source /Users/usr0600244/.travis/travis.sh
