@@ -20,7 +20,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'tyru/open-browser.vim'
   Plug 'hail2u/vim-css3-syntax'
   Plug 'leafgarland/typescript-vim'
-  Plug 'clausreinke/typescript-tools'
   Plug 'tpope/vim-pathogen'
   Plug 'scrooloose/syntastic'
   Plug 'tpope/vim-endwise'
@@ -40,7 +39,6 @@ set history=50
 filetype on        " enable filetype detection
 filetype indent on " enable filetype-specific indenting
 filetype plugin on " enable filetype-specific plugins
-
 
 " set number       " show line numbers
 set ruler        " show the cursor position all the time

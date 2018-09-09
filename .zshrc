@@ -132,8 +132,7 @@ setopt share_history # share command history data
 
 ## Completion configuration
 #
-autoload -U compinit
-compinit
+autoload -Uz compinit &&compinit
 
 ## Alias configuration
 #
@@ -229,3 +228,46 @@ alias -g G='| grep'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# zplugが無ければgitからclone
+if [[ ! -d ~/.zplug ]];then
+  git clone https://github.com/zplug/zplug ~/.zplug
+fi
+
+# zplugを使う
+source ~/.zplug/init.zsh
+
+# ここに使いたいプラグインを書いておく
+# zplug "ユーザー名/リポジトリ名", タグ
+
+# 補完を更に強化する
+# pacman や yaourt のパッケージリストも補完するようになる
+zplug "zsh-users/zsh-completions"
+
+# git の補完を効かせる
+# 補完＆エイリアスが追加される
+zplug "plugins/git",   from:oh-my-zsh
+zplug "peterhurford/git-aliases.zsh"
+
+# 入力途中に候補をうっすら表示
+zplug "zsh-users/zsh-autosuggestions"
+
+# コマンドを種類ごとに色付け
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+# ヒストリの補完を強化する
+zplug "zsh-users/zsh-history-substring-search", defer:3
+
+# 自分自身をプラグインとして管理
+zplug "zplug/zplug", hook-build:'zplug --self-manage'
+
+# インストールしてないプラグインはインストール
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+# コマンドをリンクして、PATH に追加し、プラグインは読み込む
+zplug load –verbose
