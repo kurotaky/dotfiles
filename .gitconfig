@@ -1,0 +1,18 @@
+[user]
+	name = Yuta Kurotaki
+	email = yuta.kurotaki@gmail.com
+[alias]
+    s = status
+    ci = commit
+    co = checkout
+    b = branch
+    dc = diff --cached
+    d = diff
+    f = fetch
+    m = merge
+    see = browse
+    delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+[core]
+    compression = 0
+[include]
+    path = ~/.gitconfig.local

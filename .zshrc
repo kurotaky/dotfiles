@@ -271,3 +271,7 @@ fi
 
 # コマンドをリンクして、PATH に追加し、プラグインは読み込む
 zplug load –verbose
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/vault vault
+eval "$(direnv hook zsh)"

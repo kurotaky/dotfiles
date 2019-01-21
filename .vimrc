@@ -29,6 +29,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mxw/vim-jsx'
   Plug 'keith/swift.vim'
   Plug 'elixir-lang/vim-elixir'
+  Plug 'slim-template/vim-slim'
 
 call plug#end()
 
