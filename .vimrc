@@ -21,9 +21,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'hail2u/vim-css3-syntax'
   Plug 'leafgarland/typescript-vim'
   Plug 'tpope/vim-pathogen'
-  Plug 'scrooloose/syntastic'
+  Plug 'w0rp/ale',
   Plug 'tpope/vim-endwise'
-  Plug 'Shougo/neomru.vim'
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'pangloss/vim-javascript'
   Plug 'mxw/vim-jsx'

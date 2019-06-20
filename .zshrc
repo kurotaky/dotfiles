@@ -275,3 +275,6 @@ zplug load –verbose
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/vault vault
 eval "$(direnv hook zsh)"
+
+# added by travis gem
+[ -f /Users/kurotaki/.travis/travis.sh ] && source /Users/kurotaki/.travis/travis.sh
