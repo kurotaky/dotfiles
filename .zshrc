@@ -1,6 +1,8 @@
 export PATH=/usr/local/bin:$PATH
 
-export EDITOR=vim
+export EDITOR=nvim
+
+export XDG_CONFIG_HOME=$HOME/.config
 
 # https://gist.github.com/udzura/55a523cbce494b9fd004
 precmd() {
@@ -12,15 +14,16 @@ precmd() {
 # rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
 
-# emacs
-export PATH=/usr/local/Cellar/emacs/HEAD/bin:$PATH
-
 # rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(rbenv init -)"
 
-# phpbrew
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
+# nodenv
+eval "$(nodenv init -)"
+
+# flutter
+export PATH="$PATH:$HOME/flutter/bin"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # https://github.com/hokaccha/nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
@@ -29,11 +32,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 
-# hub alias
-function git(){hub "$@"}
-
 alias -g be="bundle exec"
-alias -g e='emacs -nw'
 alias -g ber="bundle exec rspec"
 alias -g r="rails"
 alias -g t="tmux"
@@ -43,14 +42,14 @@ alias -g brs="bin/rspec"
 alias diff='colordiff'
 alias gist='gist -c -o -p'
 
-alias ghl='cd $(ghq list -p | peco)'
-alias gho='gh-open $(ghq list -p | peco)'
+alias ghl='cd $(ghq list -p | fzf)'
 
 alias ga='git add'
 alias gci='git commit -v'
 alias gs='git status'
 alias gd='git diff'
 alias gdc='git diff --cached'
+alias v='nvim'
 
 ## Environment variable configuration
 #
@@ -125,8 +124,8 @@ bindkey "\\en" history-beginning-search-forward-end
 ## Command history configuration
 #
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=1000000
 setopt hist_ignore_dups # ignore duplication command history list
 setopt share_history # share command history data
 
@@ -162,7 +161,7 @@ alias df="df -h"
 alias su="su -l"
 
 ## terminal configuration
-#
+
 unset LSCOLORS
 case "${TERM}" in
 xterm)
@@ -229,52 +228,20 @@ alias -g G='| grep'
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-# zplugが無ければgitからclone
-if [[ ! -d ~/.zplug ]];then
-  git clone https://github.com/zplug/zplug ~/.zplug
-fi
-
-# zplugを使う
-source ~/.zplug/init.zsh
-
-# ここに使いたいプラグインを書いておく
-# zplug "ユーザー名/リポジトリ名", タグ
-
-# 補完を更に強化する
-# pacman や yaourt のパッケージリストも補完するようになる
-zplug "zsh-users/zsh-completions"
-
-# git の補完を効かせる
-# 補完＆エイリアスが追加される
-zplug "plugins/git",   from:oh-my-zsh
-zplug "peterhurford/git-aliases.zsh"
-
-# 入力途中に候補をうっすら表示
-zplug "zsh-users/zsh-autosuggestions"
-
-# コマンドを種類ごとに色付け
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-# ヒストリの補完を強化する
-zplug "zsh-users/zsh-history-substring-search", defer:3
-
-# 自分自身をプラグインとして管理
-zplug "zplug/zplug", hook-build:'zplug --self-manage'
-
-# インストールしてないプラグインはインストール
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  fi
-fi
-
-# コマンドをリンクして、PATH に追加し、プラグインは読み込む
-zplug load –verbose
-
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/vault vault
-eval "$(direnv hook zsh)"
 
-# added by travis gem
-[ -f /Users/kurotaki/.travis/travis.sh ] && source /Users/kurotaki/.travis/travis.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/kurotaki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kurotaki/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/kurotaki/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kurotaki/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Wasmer
+export WASMER_DIR="/Users/kurotaki/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
