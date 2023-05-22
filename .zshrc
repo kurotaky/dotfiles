@@ -21,6 +21,10 @@ eval "$(rbenv init -)"
 # nodenv
 eval "$(nodenv init -)"
 
+# npm
+# https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally#manually-change-npms-default-directory
+export PATH=~/.npm-global/bin:$PATH
+
 # flutter
 export PATH="$PATH:$HOME/flutter/bin"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
@@ -246,3 +250,7 @@ if [ -f '/Users/kurotaki/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/
 # Wasmer
 export WASMER_DIR="/Users/kurotaki/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+
+# asdf
+. "$HOME/.asdf/asdf.sh"
