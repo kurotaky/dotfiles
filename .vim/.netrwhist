@@ -1,4 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/Users/usr0600244/pepabo-wimax/wimax'
-let g:netrw_dirhist_2='/Users/usr0600244/.phpbrew'
