@@ -15,7 +15,6 @@ require('mason').setup()
 require('lualine').setup()
 require("nvim-tree").setup()
 
-
 vim.g.mapleader = " "
 
 local builtin = require('telescope.builtin')

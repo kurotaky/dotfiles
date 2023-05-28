@@ -7,9 +7,11 @@ require('nvim-tree').setup({
         { key = 'u', action = 'dir_up' },
       },
     },
+    side = 'right',
   },
   renderer = {
     group_empty = true,
+    highlight_git = true,
   },
   filters = {
     dotfiles = true,
